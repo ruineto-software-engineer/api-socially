@@ -1,0 +1,45 @@
+{
+  "name": "api-socially",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "dotenv -e .env.test npx prisma migrate dev && NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -i",
+    "dev": "nodemon src/server.ts",
+    "dev:test": "dotenv -e .env.test nodemon src/server.ts",
+    "migrate": "npx prisma migrate dev",
+    "migrate:test": "dotenv -e .env.test npx prisma migrate dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^3.14.0",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "dotenv-cli": "^5.1.0",
+    "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.3",
+    "prisma": "^3.14.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.3.1",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^17.0.33",
+    "@types/pg": "^8.6.5",
+    "@types/supertest": "^2.0.12",
+    "jest": "^28.1.0",
+    "nodemon": "^2.0.16",
+    "supertest": "^6.2.3",
+    "ts-jest": "^28.0.2",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
+  }
+}
