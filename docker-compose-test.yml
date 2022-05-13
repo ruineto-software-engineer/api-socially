@@ -1,0 +1,16 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    container_name: db
+    restart: always
+    env_file:
+      - .env.test
+
+  node_app_socially-test:
+    container_name: node_app_socially-test
+    build: .
+    env_file:
+      - .env.test
+    depends_on:
+      - db
