@@ -1,0 +1,12 @@
+version: "3"
+services:
+  node_app_socially:
+    container_name: node_app_socially
+    build: .
+    ports:
+      - 5000:5000
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/
+      - /usr/src/node_modules
