@@ -9,6 +9,18 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
+      - name: Make env file
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_POSTGRES_USER: "qjgnelaxfwkrkh"
+          envkey_POSTGRES_PASSWORD: "d67bc898d7ae15f9ea6f6984fd55ea6130d3f324bad98ff153bf833b3b53ecd3"
+          envkey_POSTGRES_DB: "d17n9i5qgnq0aj"
+          envkey_DATABASE_URL: "postgres://qjgnelaxfwkrkh:d67bc898d7ae15f9ea6f6984fd55ea6130d3f324bad98ff153bf833b3b53ecd3@ec2-52-4-104-184.compute-1.amazonaws.com:5432/d17n9i5qgnq0aj"
+          envkey_PORT: "5000"
+          envkey_NODE_ENV: "production"
+          file_name: .env
+      - name: Push to Heroku Prisma Schema
+        run: docker-compose -f docker-compose-production.yml run node_app_socially npm run push
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
