@@ -12,7 +12,7 @@ export interface CreateLoginGitHubData {
 
 export async function create(loginData: CreateLoginData) {
   const secretKey = process.env.JWT_SECRET;
-  const configuration = { expiresIn: 10 };
+  const configuration = { expiresIn: 60 * 60 };
 
   const user = await authRepository.findByEmail(loginData);
   if (!user) throw errorsUtils.unauthorizedError("Credentials");
