@@ -11,11 +11,13 @@ datasource db {
 }
 
 model User {
-  id       Int        @id @default(autoincrement())
-  name     String
-  email    String     @unique
-  password String
-  sessions sessions[]
+  id        Int         @id @default(autoincrement())
+  name      String
+  email     String      @unique
+  password  String
+  sessions  sessions[]
+  followers followers[]
+  Post      Post[]
 
   @@map("users")
 }
@@ -25,4 +27,23 @@ model sessions {
   user   User   @relation(fields: [userId], references: [id])
   userId Int
   token  String @unique
+}
+
+model followers {
+  id         Int  @id @default(autoincrement())
+  user       User @relation(fields: [followedId], references: [id])
+  followerId Int
+  followedId Int
+  userId     Int
+}
+
+model Post {
+  id          Int      @id @default(autoincrement())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      Int
+  url         String
+  description String
+  createdAt   DateTime @default(now())
+
+  @@map("posts")
 }
