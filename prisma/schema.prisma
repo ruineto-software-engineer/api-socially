@@ -11,13 +11,12 @@ datasource db {
 }
 
 model User {
-  id        Int         @id @default(autoincrement())
-  name      String
-  email     String      @unique
-  password  String
-  sessions  sessions[]
-  followers followers[]
-  Post      Post[]
+  id       Int        @id @default(autoincrement())
+  name     String
+  email    String     @unique
+  password String
+  sessions sessions[]
+  Post     Post[]
 
   @@map("users")
 }
@@ -30,11 +29,9 @@ model sessions {
 }
 
 model followers {
-  id         Int  @id @default(autoincrement())
-  user       User @relation(fields: [followedId], references: [id])
+  id         Int @id @default(autoincrement())
   followerId Int
-  followedId Int
-  userId     Int
+  followsId  Int
 }
 
 model Post {

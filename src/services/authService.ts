@@ -6,10 +6,6 @@ import jwt from "jsonwebtoken";
 
 type CreateLoginData = Omit<User, "id">;
 
-export interface CreateLoginGitHubData {
-  code: string;
-}
-
 export async function create(loginData: CreateLoginData) {
   const secretKey = process.env.JWT_SECRET;
   const configuration = { expiresIn: 60 * 60 };

@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { stripHtml } from 'string-strip-html';
 import authSchema from '../schemas/authSchema.js';
+import postsSchema from '../schemas/postSchema.js';
 import userSchema from '../schemas/userSchema.js';
 
 function sanitizeString(string: string) {
@@ -9,7 +10,8 @@ function sanitizeString(string: string) {
 
 const schemas = {
 	'/sign-up': userSchema,
-	'/sign-in': authSchema
+	'/sign-in': authSchema,
+	'/posts': postsSchema
 };
 
 export default async function validateSchemaMiddleware(req: Request, res: Response, next: NextFunction) {
