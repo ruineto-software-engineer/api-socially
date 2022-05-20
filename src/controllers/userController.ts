@@ -32,3 +32,11 @@ export async function getPostsById(req: Request, res: Response) {
 
 	res.status(200).send(posts);
 }
+
+export async function getUsersByName(req: Request, res: Response) {
+	const userName: string = req.params.userName;
+
+	const users = await userService.getUsersByName(userName);
+
+	res.status(200).send(users);
+}

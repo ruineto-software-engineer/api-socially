@@ -7,6 +7,7 @@ const userRouter = Router();
 
 userRouter.post('/sign-up', validateSchemaMiddleware, userController.register);
 userRouter.get('/users/:userId', validateTokenMiddleware, userController.getUserById);
+userRouter.get('/users/search/:userName', validateTokenMiddleware, userController.getUsersByName);
 userRouter.get('/metrics/:userId', validateTokenMiddleware, userController.getMetricsById);
 userRouter.get('/posts/:userId', validateTokenMiddleware, userController.getPostsById);
 
