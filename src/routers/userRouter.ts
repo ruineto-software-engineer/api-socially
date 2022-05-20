@@ -1,9 +1,13 @@
 import { Router } from "express";
 import * as userController from "../controllers/userController.js";
 import validateSchemaMiddleware from "../middlewares/validateSchemaMiddleware.js";
+import validateTokenMiddleware from "../middlewares/validateTokenMiddleware.js";
 
 const userRouter = Router();
 
 userRouter.post('/sign-up', validateSchemaMiddleware, userController.register);
+userRouter.get('/users/:userId', validateTokenMiddleware, userController.getUserById);
+userRouter.get('/metrics/:userId', validateTokenMiddleware, userController.getMetricsById);
+userRouter.get('/posts/:userId', validateTokenMiddleware, userController.getPostsById);
 
 export default userRouter;
