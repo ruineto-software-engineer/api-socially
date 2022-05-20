@@ -53,3 +53,12 @@ export async function getPostsById(userId: number) {
 
 	return posts;
 }
+
+export async function getUsersByName(userName: string) {
+	if(!userName) throw errorsUtils.badRequestError('User Name');
+
+	const users = await userRepository.findByName(userName);
+	if(!users.length) throw errorsUtils.notFoundError('User');
+
+	return users;
+}

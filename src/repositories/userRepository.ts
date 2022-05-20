@@ -7,6 +7,24 @@ export async function create(userData: CreateUserData) {
 	await prisma.user.create({ data: userData });
 }
 
+export async function findByName(userName: string) {
+	const users = await prisma.user.findMany({
+		select: {
+			id: true,
+			name: true,
+			email: true
+		}, 
+		where: {
+			name: {
+				contains: userName,
+				mode: 'insensitive'
+			}
+		}
+	});
+
+	return users;
+}
+
 export async function findByEmail(email: string) {
 	const user = await prisma.user.findUnique({ where: { email } });
 
