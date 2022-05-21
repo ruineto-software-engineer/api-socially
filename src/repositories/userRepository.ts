@@ -1,5 +1,5 @@
 import { prisma } from '../database.js';
-import { User, followers } from '@prisma/client';
+import { User } from '@prisma/client';
 
 type CreateUserData = Omit<User, 'id'>;
 
