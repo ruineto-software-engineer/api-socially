@@ -62,3 +62,26 @@ export async function getUsersByName(userName: string) {
 
 	return users;
 }
+
+export async function followUser(followerId: number, followsId: number) {
+	if(!followerId) throw errorsUtils.badRequestError('Follower Id');
+	if(!followsId) throw errorsUtils.badRequestError('Follows Id');
+
+	await userRepository.followUser(followerId, followsId);
+}
+
+export async function unfollowUser(followerId: number, followsId: number) {
+	if(!followerId) throw errorsUtils.badRequestError('Follower Id');
+	if(!followsId) throw errorsUtils.badRequestError('Follows Id');
+
+	await userRepository.unfollowUser(followerId, followsId);
+}
+
+export async function getFollowsStatus(followerId: number, followsId: number) {
+	if(!followerId) throw errorsUtils.badRequestError('Follower Id');
+	if(!followsId) throw errorsUtils.badRequestError('Follows Id');
+
+	const followsStatus = await userRepository.getFollowsStatus(followerId, followsId);
+
+	return followsStatus;
+}
