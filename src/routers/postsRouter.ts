@@ -5,9 +5,6 @@ import validateSchemaMiddleware from "../middlewares/validateSchemaMiddleware.js
 
 const postsRouter = Router();
 
-postsRouter.use(validateTokenMiddleware);
-
-postsRouter.get("/posts", postsController.getAllPosts);
-postsRouter.post("/posts", validateSchemaMiddleware, postsController.create);
+postsRouter.post("/posts", validateTokenMiddleware, validateSchemaMiddleware, postsController.create);
 
 export default postsRouter;
