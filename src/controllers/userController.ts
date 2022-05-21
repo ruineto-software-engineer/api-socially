@@ -40,3 +40,30 @@ export async function getUsersByName(req: Request, res: Response) {
 
 	res.status(200).send(users);
 }
+
+export async function followUser(req: Request, res: Response) {
+	const followData = req.body;
+
+	await userService.followUser(followData.followerId, followData.followsId);
+
+	res.sendStatus(200);
+}
+
+export async function unfollowUser(req: Request, res: Response) {
+	const unfollowData = req.body;
+
+	await userService.unfollowUser(unfollowData.followerId, unfollowData.followsId);
+
+	res.sendStatus(200);
+}
+
+export async function getFollowsStatus(req: Request, res: Response) {
+	const followData = req.query.find;
+
+	const followerId = parseInt(followData[14]);
+	const followsId = parseInt(followData[28]);
+
+ 	const followsStatus = await userService.getFollowsStatus(followerId, followsId);
+
+	res.status(200).send(followsStatus);
+}

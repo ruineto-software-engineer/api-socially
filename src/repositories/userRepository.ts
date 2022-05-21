@@ -1,5 +1,5 @@
 import { prisma } from '../database.js';
-import { User } from '@prisma/client';
+import { User, followers } from '@prisma/client';
 
 type CreateUserData = Omit<User, 'id'>;
 
@@ -78,4 +78,37 @@ export async function getFollowsById(userId: number) {
 	const follows = await prisma.followers.count({ where: { followerId: userId } });
 
 	return follows;
+}
+
+export async function followUser(followerId: number, followsId: number) {
+	await prisma.followers.create({ 
+		data: { 
+			followerId: followerId,
+			followsId: followsId
+		} 
+	});
+}
+
+export async function unfollowUser(followerId: number, followsId: number) {
+	await prisma.followers.deleteMany({ 
+		where: {
+			followerId: followerId,
+			followsId: followsId
+		}
+	});
+}
+
+export async function getFollowsStatus(followerId: number, followsId: number) {
+	const followsStatus = await prisma.followers.findFirst({
+		where: {
+			followerId: followerId,
+			followsId: followsId
+		}
+	});
+
+	if (followsStatus) {
+		return true;
+	} else{
+		return false;
+	}
 }
