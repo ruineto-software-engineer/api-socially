@@ -60,8 +60,20 @@ export async function unfollowUser(req: Request, res: Response) {
 export async function getFollowsStatus(req: Request, res: Response) {
 	const followData = req.query.find;
 
-	const followerId = parseInt(followData[14]);
-	const followsId = parseInt(followData[28]);
+	const followerId = parseInt(
+		followData.toString().split(",")[0]
+		.replace(`"`, "")
+		.replace(`"`, "")
+		.replace(`{`, "")
+		.replace(`followerId:`, "")
+	);
+	const followsId = parseInt(		
+		followData.toString().split(",")[1]
+		.replace(`"`, "")
+		.replace(`"`, "")
+		.replace(`}`, "")
+		.replace(`followsId:`, "")
+	);
 
  	const followsStatus = await userService.getFollowsStatus(followerId, followsId);
 
