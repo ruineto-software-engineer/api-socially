@@ -16,7 +16,7 @@ export async function getAllFollows(userId: number) {
 export async function getAllPosts(followsReader: number[]) {
   let postsArr = [];
   for (let i = 0; i < followsReader.length; i++) {
-    const element = followsReader[i];
+    const follow = followsReader[i];
     const posts = await prisma.post.findMany({ 
       include:{
         user: {
@@ -26,7 +26,7 @@ export async function getAllPosts(followsReader: number[]) {
         }
       },
       where: {
-        userId: element
+        userId: follow
       }
     });
 
