@@ -17,6 +17,7 @@ model User {
   password String
   sessions sessions[]
   Post     Post[]
+  chats    chats[]
   follower followers[] @relation("follower")
   follows  followers[] @relation("follows")
 
@@ -47,4 +48,13 @@ model Post {
   createdAt   DateTime @default(now())
 
   @@map("posts")
+}
+
+model chats {
+  id          Int      @id @default(autoincrement())
+  user        User     @relation(fields: [senderId], references: [id])
+  senderId    Int
+  recipientId Int
+  message     String
+  createdAt   DateTime @default(now())
 }

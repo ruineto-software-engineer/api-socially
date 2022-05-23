@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { stripHtml } from 'string-strip-html';
 import authSchema from '../schemas/authSchema.js';
 import followersSchema from '../schemas/followersSchema.js';
+import messageSchema from '../schemas/messageSchema.js';
 import postsSchema from '../schemas/postSchema.js';
 import userSchema from '../schemas/userSchema.js';
 
@@ -14,7 +15,8 @@ const schemas = {
 	'/sign-in': authSchema,
 	'/posts': postsSchema,
 	'/follow': followersSchema,
-	'/unfollow': followersSchema
+	'/unfollow': followersSchema,
+	'/chat': messageSchema
 };
 
 export default async function validateSchemaMiddleware(req: Request, res: Response, next: NextFunction) {
