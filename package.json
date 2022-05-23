@@ -20,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^3.14.0",
+    "@types/socket.io": "^3.0.2",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
@@ -30,6 +31,7 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3",
     "prisma": "^3.14.0",
+    "socket.io": "^4.5.1",
     "string-strip-html": "^9.1.12"
   },
   "devDependencies": {
