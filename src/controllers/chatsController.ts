@@ -30,8 +30,6 @@ export async function getStatusById(req: Request, res: Response) {
 export async function sendMessage(req: Request, res: Response) {
 	const messageData: chatsRepository.CreateMessageData = req.body;
 
-	console.log("Entrei aqui!");
-
 	await chatsService.sendMessage(messageData);
 
 	res.sendStatus(201);
