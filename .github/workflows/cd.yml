@@ -16,6 +16,7 @@ jobs:
           envkey_POSTGRES_PASSWORD: "d67bc898d7ae15f9ea6f6984fd55ea6130d3f324bad98ff153bf833b3b53ecd3"
           envkey_POSTGRES_DB: "d17n9i5qgnq0aj"
           envkey_DATABASE_URL: "postgres://qjgnelaxfwkrkh:d67bc898d7ae15f9ea6f6984fd55ea6130d3f324bad98ff153bf833b3b53ecd3@ec2-52-4-104-184.compute-1.amazonaws.com:5432/d17n9i5qgnq0aj"
+          envkey_APPLICATION_BASE_URL: "https://socially-ruineto-dev.vercel.app"
           envkey_PORT: "5000"
           envkey_NODE_ENV: "production"
           file_name: .env
