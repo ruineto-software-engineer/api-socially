@@ -13,7 +13,7 @@ const io = new Server(httpServer, {
 });
 
 io.on('connection', socket => {
-  socket.on("sendMensage", message => {    
+  socket.on("sendMensage", message => {
     socket.broadcast.emit("receivedMessage", message);
   });
 });

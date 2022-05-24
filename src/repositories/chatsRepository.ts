@@ -70,7 +70,7 @@ export async function getMessages(senderId: number, recipientId: number) {
     return 0;
   });
 
-  return messagesSorted;
+  return messagesSorted.slice(-20);
 }
 
 export async function findByName(senderName: string) {
