@@ -7,9 +7,7 @@ const PORT = process.env.PORT || 5000;
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.APPLICATION_BASE_URL,
-    methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
+    origin: "*",
     credentials: true
   }
 });
